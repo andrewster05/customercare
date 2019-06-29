@@ -33,7 +33,7 @@ namespace CustomerCare
             var superAdmin = new IdentityUser
             {
                 UserName = Configuration["AppSettings:UserName"],
-                Email = Configuration["AppSettings:UserEmail"],
+                Email = Configuration["AppSettings:AdminUserEmail"],
             };
 
             string userPWD = Configuration["AppSettings:UserPassword"];
@@ -67,15 +67,6 @@ namespace CustomerCare
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services
-                .AddIdentity<IdentityUser, IdentityRole>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -96,6 +87,15 @@ namespace CustomerCare
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
             });
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services
+                .AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.ConfigureApplicationCookie(options =>
             {
