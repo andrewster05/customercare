@@ -7,12 +7,11 @@
 - Once admins login, they should go to customer list page which has search, page and sort (Use stored procedure).
 - Users should be able to view/edit their own profile.
 
-## RUN
+## RUN DATABASE MIGRATION
 - run in the PM Console: "dotnet ef database update -c ApplicationDbContext"
-- execute all sql scripts in the Sql > Scripts location
 
 ## LOGIN
-- look in the appsettings.json for the administrator credentials
+- look in the appsettings.json for the administrator credentials *(UserName and UserPassword are the login crendentials)
 - additional users created through the registration will not be adminstrators. 
 
 HAVE FUN!

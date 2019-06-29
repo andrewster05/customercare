@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -152,6 +153,101 @@ namespace CustomerCare.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Firstname = table.Column<string>(maxLength: 100, nullable: false),
+                    Lastname = table.Column<string>(maxLength: 100, nullable: false),
+                    Email = table.Column<string>(maxLength: 256, nullable: false),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    ZipCode = table.Column<string>(maxLength: 9, nullable: true),
+                    Country = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    SystemRole = table.Column<int>(nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            // Add Seed Data
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "John", "Smith", "jsmith@gmail.com", new DateTime(1977, 08, 07), "77459", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "James", "Smith", "jamessmith@gmail.com", new DateTime(1979, 05, 03), "77459", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Jimmy", "Smith", "jimmysmith@gmail.com", new DateTime(1981, 01, 21), "77459", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Christopher", "Smith", "chrissmith@gmail.com", new DateTime(2015, 03, 07), "77459", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Adam", "West", "darkknight@gmail.com", new DateTime(1963, 02, 28), "77459", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Jane", "McGray", "jgray@gmail.com", new DateTime(1950, 02, 05), "85040", 1, DateTime.UtcNow, 2 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Julie", "Moore", "jmoore@gmail.com", new DateTime(1984, 06, 05), "20254", 4, DateTime.UtcNow, 3 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Hank", "Hankerson", "hhank@yahoo.com", new DateTime(1948, 05, 07), "85040", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Mary", "Miller", "mmiller@yahoo.com", new DateTime(1995, 03, 20), "97804", 2, DateTime.UtcNow, 2 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Zeke", "Abelson", "helperman@hotmail.com", new DateTime(1950, 10, 07), "77459", 2, DateTime.UtcNow, 3 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Aaron", "Adams", "aadams@gmail.com", new DateTime(1960, 08, 07), "75849", 2, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Alex", "Zackerman", "azack@yahoo.com", new DateTime(1990, 12, 25), "45455", 1, DateTime.UtcNow, 1 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Paul", "Bunyan", "pbuyan@gmail.com", new DateTime(2018, 05, 10), "75658", 3, DateTime.UtcNow, 2 });
+
+            migrationBuilder.InsertData(
+               table: "Customers",
+               columns: new[] { "Firstname", "Lastname", "Email", "DateOfBirth", "ZipCode", "Country", "CreatedDate", "SystemRole" },
+               values: new object[] { "Gus", "Jacobs", "gus123@hotmail.com", new DateTime(1909, 03, 01), "56660", 2, DateTime.UtcNow, 1 });
+
+            // Add Stored Procedure
+            var sqlFile = Path.Combine(Environment.CurrentDirectory, @"Sql/Scripts/CustomerSearch.sql");
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

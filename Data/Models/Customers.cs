@@ -22,6 +22,7 @@ namespace CustomerCare.Data.Models
         public string Email { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Zip Code")]
@@ -52,6 +53,7 @@ namespace CustomerCare.Data.Models
         public string Email { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Zip Code")]
