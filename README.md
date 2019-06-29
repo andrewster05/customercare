@@ -8,9 +8,8 @@
 - Users should be able to view/edit their own profile.
 
 ## RUN
-- clone
-- run in the PM Console: dotnet ef database update
-- use Sql > Scripts to add any missing or necessary database tables or stored procedures
+- run in the PM Console: "dotnet ef database update -c ApplicationDbContext"
+- execute all sql scripts in the Sql > Scripts location
 
 ## LOGIN
 - look in the appsettings.json for the administrator credentials
