@@ -111,8 +111,8 @@ else
         </tbody>
     </table>
 
-    var prevDisabled = (pageSize * pageNumber) < totalResults ? "disabled" : "";
-    var nextDisabled = (pageSize * pageNumber) > totalResults ? "disabled" : "";
+    var prevDisabled = pageNumber <= 1 ? "disabled" : "";
+    var nextDisabled = totalResults == null || (pageSize * pageNumber) > totalResults ? "disabled" : "";
 
     <a asp-action="Index"
        asp-route-sortOrder="@sortOrder"
