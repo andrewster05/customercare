@@ -1,0 +1,136 @@
+﻿@model IEnumerable<CustomerCare.Data.Models.CustomersSearchResult>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+@{
+    var currentFilter = @ViewData["currentFilter"];
+    var sortOrder = @ViewData["SortOrder"];
+    var sortColumn = @ViewData["SortColumn"];
+    var currentSort = @ViewData["CurrentSort"];
+    var pageNumber = (int)ViewData["PageNumber"];
+    var pageSize = (int)ViewData["PageSize"];
+    var totalResults = @ViewBag.TotalResults;
+    var hasResult = Model != null && totalResults > 0;
+}
+<h1>Customers</h1>
+
+<a asp-action="Create">Create New</a>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        Filter: <input type="text" name="SearchTerm" value="@currentFilter" />
+        <input type="submit" value="Search" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="@sortColumn" class="btn btn-default" />
+    </div>
+}
+
+@if (hasResult)
+{
+    <p>
+        Showing items @(pageSize * pageNumber - pageSize + 1)
+        through @(pageSize * pageNumber > totalResults ? totalResults : pageSize * pageNumber)
+        of <strong>@ViewBag.TotalResults total results</strong>.
+    </p>
+}
+else
+{
+    <p>
+        No results. Try changing your filters.
+    </p>
+}
+
+@if (Model != null)
+{
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="Firstname">@Html.DisplayNameFor(model => model.FirstOrDefault().Firstname)</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="Lastname">@Html.DisplayNameFor(model => model.FirstOrDefault().Lastname)</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="Email">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().ZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().SystemRole)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SystemRole)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    var prevDisabled = (pageSize * pageNumber) < totalResults ? "disabled" : "";
+    var nextDisabled = (pageSize * pageNumber) > totalResults ? "disabled" : "";
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@sortOrder"
+       asp-route-pageNumber="@(pageNumber - 1)"
+       asp-route-currentFilter="@currentFilter"
+       asp-route-sortColumn="@sortColumn"
+       asp-route-postAction="previous"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a>@pageNumber</a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@sortOrder"
+       asp-route-pageNumber="@(pageNumber + 1)"
+       asp-route-currentFilter="@currentFilter"
+       asp-route-sortColumn="@sortColumn"
+       asp-route-postAction="next"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+}

@@ -1,0 +1,64 @@
+﻿@model CustomerCare.Data.Models.Customers
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Customers > Details</h1>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SystemRole)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SystemRole)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
