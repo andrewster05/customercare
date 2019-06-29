@@ -4,7 +4,7 @@
     ViewData["Title"] = "Customers";
 }
 @{
-    var currentFilter = @ViewData["currentFilter"];
+    var searchTerm = @ViewData["SearchTerm"];
     var sortOrder = @ViewData["SortOrder"];
     var sortColumn = @ViewData["SortColumn"];
     var currentSort = @ViewData["CurrentSort"];
@@ -19,8 +19,11 @@
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        Filter: <input type="text" name="SearchTerm" value="@currentFilter" />
-        <input type="submit" value="Search" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="@sortColumn" class="btn btn-default" />
+        Filter: <input type="text" name="SearchTerm" value="@searchTerm" />
+        <input type="submit" value="Search" 
+               asp-route-pageNumber="1" 
+               asp-route-sortOrder="@sortOrder" 
+               asp-route-sortColumn="@sortColumn" class="btn btn-default" />
     </div>
 }
 
@@ -47,13 +50,25 @@ else
         <thead>
             <tr>
                 <th>
-                    <a asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="Firstname">@Html.DisplayNameFor(model => model.FirstOrDefault().Firstname)</a>
+                    <a asp-action="Index" 
+                       asp-route-pageNumber="1" 
+                       asp-route-sortOrder="@sortOrder"
+                       asp-route-searchTerm="@searchTerm"
+                       asp-route-sortColumn="Firstname">@Html.DisplayNameFor(model => model.FirstOrDefault().Firstname)</a>
                 </th>
                 <th>
-                    <a asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="Lastname">@Html.DisplayNameFor(model => model.FirstOrDefault().Lastname)</a>
+                    <a asp-action="Index" 
+                       asp-route-pageNumber="1" 
+                       asp-route-sortOrder="@sortOrder"
+                       asp-route-searchTerm="@searchTerm"
+                       asp-route-sortColumn="Lastname">@Html.DisplayNameFor(model => model.FirstOrDefault().Lastname)</a>
                 </th>
                 <th>
-                    <a asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@sortOrder" asp-route-sortColumn="Email">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</a>
+                    <a asp-action="Index" 
+                       asp-route-pageNumber="1" 
+                       asp-route-sortOrder="@sortOrder"
+                       asp-route-searchTerm="@searchTerm"
+                       asp-route-sortColumn="Email">@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</a>
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)
@@ -117,7 +132,7 @@ else
     <a asp-action="Index"
        asp-route-sortOrder="@sortOrder"
        asp-route-pageNumber="@(pageNumber - 1)"
-       asp-route-currentFilter="@currentFilter"
+       asp-route-searchTerm="@searchTerm"
        asp-route-sortColumn="@sortColumn"
        asp-route-postAction="previous"
        class="btn btn-default @prevDisabled">
@@ -127,7 +142,7 @@ else
     <a asp-action="Index"
        asp-route-sortOrder="@sortOrder"
        asp-route-pageNumber="@(pageNumber + 1)"
-       asp-route-currentFilter="@currentFilter"
+       asp-route-searchTerm="@searchTerm"
        asp-route-sortColumn="@sortColumn"
        asp-route-postAction="next"
        class="btn btn-default @nextDisabled">

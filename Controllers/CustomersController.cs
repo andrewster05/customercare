@@ -31,7 +31,7 @@ namespace CustomerCare.Controllers
                 sortOrder = sortOrder == "asc" ? "desc" : "asc";
             ViewData["SortOrder"] = sortOrder;
             searchTerm = searchTerm ?? string.Empty;
-            ViewData["CurrentFilter"] = searchTerm;
+            ViewData["SearchTerm"] = searchTerm;
             ViewData["PageNumber"] = pageNumber;
             ViewData["PageSize"] = pageSize;
 
