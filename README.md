@@ -11,7 +11,7 @@
 - run in the PM Console: "dotnet ef database update -c ApplicationDbContext"
 
 ## LOGIN
-- look in the appsettings.json for the administrator credentials *(UserName and UserPassword are the login crendentials)
+- look in the appsettings.json for the administrator credentials *(UserName and UserPassword are the login credentials)
 - additional users created through the registration will not be adminstrators. 
 
 HAVE FUN!
